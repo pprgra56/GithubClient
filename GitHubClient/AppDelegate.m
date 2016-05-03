@@ -18,14 +18,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
+
+    [[GithubHttCongifuration sharedInstance] setBaseURL:kGitHubAPIBaseURL];
     
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
+    NSLog(@"url is %@", url);
     if(url.absoluteString.length > 0){
         [OAuth2Manager handleRedirectURL:url];
         return YES;

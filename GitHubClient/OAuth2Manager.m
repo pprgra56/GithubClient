@@ -37,6 +37,7 @@
         [oauthRequest startWithFinishedBlock:^(NSError *error, id responseObject) {
     
             if (!error) {
+                NSLog(@"%@", responseObject);
                 [[NSUserDefaults standardUserDefaults] setToken:responseObject[@"access_token"]];
                 [[NSUserDefaults standardUserDefaults] setTokenType:responseObject[@"token_type"]];
             }

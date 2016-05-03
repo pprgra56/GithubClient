@@ -22,6 +22,7 @@
 		40255B111CD63C5900BC0F7C /* OAuth2TokenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255B101CD63C5900BC0F7C /* OAuth2TokenRequest.m */; };
 		40255B161CD6409C00BC0F7C /* OAuth2Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255B151CD6409C00BC0F7C /* OAuth2Manager.m */; };
 		40255B1E1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255B1D1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.m */; };
+		40255B211CD72A7100BC0F7C /* UserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255B201CD72A7100BC0F7C /* UserRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		40255B151CD6409C00BC0F7C /* OAuth2Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2Manager.m; sourceTree = "<group>"; };
 		40255B1C1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+TokenAccess.h"; sourceTree = "<group>"; };
 		40255B1D1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+TokenAccess.m"; sourceTree = "<group>"; };
+		40255B1F1CD72A7100BC0F7C /* UserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequest.h; sourceTree = "<group>"; };
+		40255B201CD72A7100BC0F7C /* UserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequest.m; sourceTree = "<group>"; };
 		5324FCC9FB9398E7F258D85C /* Pods_GitHubClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3F90B7742DF2C2777E1377A /* Pods-GitHubClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.release.xcconfig"; sourceTree = "<group>"; };
 		BFFB14B87C452ECFBF7EC8E8 /* Pods-GitHubClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		40255ACA1CD5011400BC0F7C /* GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
+				40255B221CD72C2600BC0F7C /* ViewController */,
 				40255B181CD7251F00BC0F7C /* Category */,
 				40255B171CD6431300BC0F7C /* Storyboard */,
 				40255B131CD6408E00BC0F7C /* Util */,
@@ -197,6 +201,8 @@
 			children = (
 				40255B0F1CD63C5900BC0F7C /* OAuth2TokenRequest.h */,
 				40255B101CD63C5900BC0F7C /* OAuth2TokenRequest.m */,
+				40255B1F1CD72A7100BC0F7C /* UserRequest.h */,
+				40255B201CD72A7100BC0F7C /* UserRequest.m */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -232,6 +238,13 @@
 				40255B1D1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.m */,
 			);
 			name = Category;
+			sourceTree = "<group>";
+		};
+		40255B221CD72C2600BC0F7C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		56C9D0134DB0D88FF55EBEC5 /* Frameworks */ = {
@@ -423,6 +436,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40255B211CD72A7100BC0F7C /* UserRequest.m in Sources */,
 				40255B161CD6409C00BC0F7C /* OAuth2Manager.m in Sources */,
 				40255AD31CD5011400BC0F7C /* ViewController.m in Sources */,
 				40255B1E1CD7257E00BC0F7C /* NSUserDefaults+TokenAccess.m in Sources */,

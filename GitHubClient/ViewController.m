@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "OAuth2Manager.h"
+#import "UserRequest.h"
 
 @interface ViewController ()
 
@@ -30,6 +31,14 @@
 - (IBAction)handleOpenSafari:(id)sender
 {
     [OAuth2Manager openSafariToLogin];
+}
+
+- (IBAction)fetchUserFromRequest:(id)sender
+{
+    UserRequest *request = [[UserRequest alloc] init];
+    [request startWithFinishedBlock:^(NSError *error, id result) {
+        NSLog(@"error is %@,result is %@",error,result);
+    }];
 }
 
 @end

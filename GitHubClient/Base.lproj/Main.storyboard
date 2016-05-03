@@ -24,10 +24,19 @@
                                     <action selector="handleOpenSafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZhT-f4-e7A"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdo-9w-mwF">
+                                <rect key="frame" x="281" y="340" width="61" height="30"/>
+                                <state key="normal" title="Get User"/>
+                                <connections>
+                                    <action selector="fetchUserFromRequest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vcm-Pc-wz3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kdo-9w-mwF" firstAttribute="top" secondItem="aGG-EN-jGk" secondAttribute="bottom" constant="25" id="2a7-r3-zZY"/>
                             <constraint firstItem="aGG-EN-jGk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6mc-f3-eSy"/>
+                            <constraint firstItem="kdo-9w-mwF" firstAttribute="leading" secondItem="aGG-EN-jGk" secondAttribute="leading" id="CHE-8R-UdN"/>
                             <constraint firstItem="aGG-EN-jGk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RUx-jx-NFi"/>
                         </constraints>
                     </view>

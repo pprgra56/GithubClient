@@ -95,6 +95,12 @@
         request.sessionDataTask = [_manager GET:[self buildRequestURL:request] parameters:request.requestBody progress:^(NSProgress * _Nonnull downloadProgress) {
             
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)task.response;
+            if ([httpResponse respondsToSelector:@selector(allHeaderFields)]) {
+                NSDictionary *dictionary = [httpResponse allHeaderFields];
+                NSLog(@"%@", [dictionary description]);
+                NSLog(@"status code is%d",httpResponse.statusCode);
+            }
             if (request.requestFinishedCallback) {
                 request.requestFinishedCallback(nil, responseObject);
             }
@@ -125,8 +131,10 @@
 - (void)addAuthorizationForHttpHeader
 {
     NSString *token = [[NSUserDefaults standardUserDefaults] getToken];
-    if (token.length > 0) {
-        [_manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
+    NSString *tokenType = [[NSUserDefaults standardUserDefaults] getTokenType];
+    if (token.length > 0 && tokenType.length > 0) {
+        NSString *authorization = [NSString stringWithFormat:@"%@ %@",@"token", token];
+        [_manager.requestSerializer setValue:authorization forHTTPHeaderField:@"Authorization"];
     }
 }
 
