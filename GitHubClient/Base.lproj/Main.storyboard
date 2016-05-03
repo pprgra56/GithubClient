@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="v1" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,8 +16,36 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hcP-TE-jyJ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="380"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51s-69-VkQ">
+                                <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                                <state key="normal" title="token"/>
+                                <connections>
+                                    <action selector="click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MDp-Wx-BxB"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hcP-TE-jyJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="3Ly-jQ-XRU"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hcP-TE-jyJ" secondAttribute="bottom" constant="200" id="IDQ-8S-xp2"/>
+                            <constraint firstItem="hcP-TE-jyJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Juc-UJ-zQA"/>
+                            <constraint firstItem="51s-69-VkQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KVm-YB-FBE"/>
+                            <constraint firstAttribute="trailing" secondItem="51s-69-VkQ" secondAttribute="trailing" id="T1i-NI-gZY"/>
+                            <constraint firstAttribute="trailing" secondItem="hcP-TE-jyJ" secondAttribute="trailing" id="hU4-cG-cfe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="51s-69-VkQ" secondAttribute="bottom" id="s9N-ul-BqU"/>
+                            <constraint firstItem="51s-69-VkQ" firstAttribute="top" secondItem="hcP-TE-jyJ" secondAttribute="bottom" id="t81-9T-Z6W"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="texttv" destination="hcP-TE-jyJ" id="Sta-Ak-B5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

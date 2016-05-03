@@ -7,23 +7,26 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ViewController ()
+
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    //code
+- (IBAction)click:(id)sender {
+    UIApplication *application =  [UIApplication sharedApplication];
+    NSURL *url = [NSURL URLWithString:@"https://github.com/login/oauth/authorize?client_id=b3eb1dd9811e58d681a0&scope=user&redirect_uri=pprgra56://"];
+    [application openURL:url];
+    AppDelegate *delegate =(AppDelegate *) application.delegate;
+    delegate.v1 = self;
 
-
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
 
 @end
