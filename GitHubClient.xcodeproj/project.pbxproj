@@ -16,6 +16,7 @@
 		40255ADB1CD5011400BC0F7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40255AD91CD5011400BC0F7C /* LaunchScreen.storyboard */; };
 		40255AE61CD5011400BC0F7C /* GitHubClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255AE51CD5011400BC0F7C /* GitHubClientTests.m */; };
 		40255AF11CD5011400BC0F7C /* GitHubClientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255AF01CD5011400BC0F7C /* GitHubClientUITests.m */; };
+		9B29F3591CD8B2CB009C9C30 /* OAuthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B29F3581CD8B2CB009C9C30 /* OAuthHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		40255AF01CD5011400BC0F7C /* GitHubClientUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GitHubClientUITests.m; sourceTree = "<group>"; };
 		40255AF21CD5011400BC0F7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5324FCC9FB9398E7F258D85C /* Pods_GitHubClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B29F3571CD8B2CB009C9C30 /* OAuthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthHelper.h; sourceTree = "<group>"; };
+		9B29F3581CD8B2CB009C9C30 /* OAuthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthHelper.m; sourceTree = "<group>"; };
 		B3F90B7742DF2C2777E1377A /* Pods-GitHubClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.release.xcconfig"; sourceTree = "<group>"; };
 		BFFB14B87C452ECFBF7EC8E8 /* Pods-GitHubClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +163,8 @@
 		40255AFE1CD5045D00BC0F7C /* HttpClient */ = {
 			isa = PBXGroup;
 			children = (
+				9B29F3571CD8B2CB009C9C30 /* OAuthHelper.h */,
+				9B29F3581CD8B2CB009C9C30 /* OAuthHelper.m */,
 			);
 			name = HttpClient;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40255AD31CD5011400BC0F7C /* ViewController.m in Sources */,
+				9B29F3591CD8B2CB009C9C30 /* OAuthHelper.m in Sources */,
 				40255AD01CD5011400BC0F7C /* AppDelegate.m in Sources */,
 				40255ACD1CD5011400BC0F7C /* main.m in Sources */,
 			);

@@ -21,9 +21,12 @@
     NSURL *url = [NSURL URLWithString:@"https://github.com/login/oauth/authorize?client_id=b3eb1dd9811e58d681a0&scope=user&redirect_uri=pprgra56://"];
     [application openURL:url];
     AppDelegate *delegate =(AppDelegate *) application.delegate;
+
+
+
     delegate.v1 = self;
 
-    
+
 }
 
 
