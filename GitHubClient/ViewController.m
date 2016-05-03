@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "OAuthHelper.h"
 
 @interface ViewController ()
 
@@ -15,21 +16,17 @@
 @end
 
 @implementation ViewController
-
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayResult:) name:@"NTRESULT" object:nil];
+}
 - (IBAction)click:(id)sender {
-    UIApplication *application =  [UIApplication sharedApplication];
-    NSURL *url = [NSURL URLWithString:@"https://github.com/login/oauth/authorize?client_id=b3eb1dd9811e58d681a0&scope=user&redirect_uri=pprgra56://"];
-    [application openURL:url];
-    AppDelegate *delegate =(AppDelegate *) application.delegate;
-
-
-
-    delegate.v1 = self;
-
+    [OAuthHelper getCode];
+}
+-(void)displayResult:(NSNotification *)noti{
+    NSDictionary *dic = (NSDictionary *)noti.userInfo;
+    [self.texttv setText:[NSString stringWithFormat:@"%@",dic[@"key"]]];
 
 }
-
-
-
 
 @end

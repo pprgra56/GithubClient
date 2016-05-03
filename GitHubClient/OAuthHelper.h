@@ -10,4 +10,7 @@
 
 @interface OAuthHelper : NSObject
 
++(void)getCode;
++(void)sendToken:(NSString *)token;
+
 @end
