@@ -9,8 +9,29 @@
 #import <Foundation/Foundation.h>
 
 @interface HttpTool : NSObject
-+(void)post:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
 
-+(void)get:(NSString *)url  andToken:(NSString *)token success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
++ (instancetype)sharedInstance;
+/**
+ *  post
+ *
+ *  @param url     <#url description#>
+ *  @param param   <#param description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+- (void)post:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
+
+/**
+ *  get
+ *
+ *  @param url     <#url description#>
+ *  @param param   <#param description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+- (void)get:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
+
+
+
 
 @end

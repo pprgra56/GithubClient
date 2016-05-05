@@ -7,26 +7,46 @@
 //
 
 #import "ViewController.h"
+#import "OAuth2Helper.h"
 #import "AppDelegate.h"
-#import "OAuthHelper.h"
 
-@interface ViewController ()
+@interface ViewController ()<OAuth2HelperDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextView *texttv;
 
+@property(strong,nonatomic) OAuth2Helper *oauth2Helper;
 @end
 
 @implementation ViewController
+
+#pragma mark - LazyLoad
+-(OAuth2Helper *)oauth2Helper{
+    if(_oauth2Helper == nil){
+        _oauth2Helper = [[OAuth2Helper alloc] init];
+        _oauth2Helper.delegate = self;
+    }
+    return _oauth2Helper;
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayResult:) name:@"NTRESULT" object:nil];
+    ((AppDelegate *) [UIApplication sharedApplication].delegate).oauth2Helper = self.oauth2Helper;
 }
+
 - (IBAction)click:(id)sender {
-    [OAuthHelper getCode];
-}
--(void)displayResult:(NSNotification *)noti{
-    NSDictionary *dic = (NSDictionary *)noti.userInfo;
-    [self.texttv setText:[NSString stringWithFormat:@"%@",dic[@"key"]]];
-
+    [self.oauth2Helper openLoginUrl];
 }
 
+
+
+#pragma mark - OAuth2HelperDelegate
+- (void)pullUserInfo{
+
+    [self.oauth2Helper pullUserInfoWithToken];
+}
+
+- (void)displayUserInfo:(id)userInfo{
+    NSLog(@"Joker number is %@",userInfo);
+    [self.texttv setText:[NSString stringWithFormat:@"%@",userInfo]];
+}
 @end

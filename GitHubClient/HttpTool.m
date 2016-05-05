@@ -10,44 +10,62 @@
 #import "AFNetworking.h"
 
 
+@interface HttpTool()
+
+@property(strong,nonatomic) AFHTTPSessionManager *manager;
+@end
+
 @implementation HttpTool
 
-+(void)post:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure{
++ (instancetype)sharedInstance{
+    static HttpTool *httptool = nil;
 
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    [manager POST:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if(success){
-            success(responseObject);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if(failure){
-            failure(error);
-        }
-    }];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
 
+        httptool = [[HttpTool alloc] init];
+    });
+    return httptool;
 }
-
-+(void)get:(NSString *)url andToken:(NSString *)token success:(void (^)(id responseObj))success failure:(void (^)(id error))failure{
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    if(token != nil){
-        url = [NSString stringWithFormat:@"%@%@",url,token];
-        NSString *authorization = [NSString stringWithFormat:@"%@ %@",@"token", token];
-        [manager.requestSerializer setValue:authorization forHTTPHeaderField:@"Authorization"];
+- (instancetype)init{
+    self = [super init];
+    if (self){
+        _manager = [AFHTTPSessionManager manager];
     }
+    return self;
+}
 
-    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+- (void)post:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure{
+
+
+
+    [self.manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [self.manager POST:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+        if(success) success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+        if(failure) failure(error);
+    }];
+
+}
+
+- (void)get:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure{
+
+    [self.manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+        NSLog(@"Joker statusCode is %d",((NSHTTPURLResponse *)task.response).statusCode);
         if(success){
+            NSLog(@"Joker allheader : %@",((NSHTTPURLResponse *)task.response).allHeaderFields);
             success(responseObject);
         }
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
-        if(failure){
-            failure(error);
-        }
+     if(failure) failure(error);
     }];
 }
+
 
 @end

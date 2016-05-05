@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import "OAuth2Helper.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property(strong,nonatomic) ViewController *v1;
 
-
+@property(strong,nonatomic) OAuth2Helper *oauth2Helper;
 @end
 
