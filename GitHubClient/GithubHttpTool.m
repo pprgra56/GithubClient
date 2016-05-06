@@ -58,7 +58,7 @@
     url = [NSString stringWithFormat:@"%@%@",url,token];
     NSString *authorization = [NSString stringWithFormat:@"%@ %@",@"token", token];
     AFHTTPSessionManager *manager =  [_httpTool performSelector:@selector(manager)];
-    NSLog(@"Joker manager is %p",manager);
+    
     [manager.requestSerializer setValue:authorization forHTTPHeaderField:@"Authorization"];
     [_httpTool get:url params:nil success:^(id responseObj) {
 

@@ -14,7 +14,6 @@
 +(instancetype)sharedInstance;
 
 
-
 - (void)post:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
 
 - (void)get:(NSString *)url success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;

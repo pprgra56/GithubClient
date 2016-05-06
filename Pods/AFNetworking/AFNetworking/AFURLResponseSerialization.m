@@ -97,9 +97,16 @@ static id AFJSONObjectByRemovingKeysWithNullValues(id JSONObject, NSJSONReadingO
         return nil;
     }
 
+
     self.stringEncoding = NSUTF8StringEncoding;
 
-    self.acceptableStatusCodes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)];
+
+    NSMutableIndexSet *indexset =[NSMutableIndexSet indexSetWithIndexesInRange:NSMakeRange(200, 100)];
+    [indexset addIndex:304];
+
+
+    self.acceptableStatusCodes =indexset;
+
     self.acceptableContentTypes = nil;
 
     return self;

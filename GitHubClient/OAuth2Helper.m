@@ -33,6 +33,11 @@
 
     NSString *urlstr = [NSString stringWithFormat:@"%@?client_id=%@&scope=%@&redirect_uri=%@",GithubLoginUrl,CLIENT_ID,SCOPE,REDIRECT_URI];
 
+    NSLog(@"Joker url is  %@",urlstr);
+
+
+
+
     NSURL *url = [NSURL URLWithString:urlstr];
 
     if([application canOpenURL:url]){
@@ -50,18 +55,18 @@
 
     NSDictionary *param = @{@"client_id":CLIENT_ID,@"client_secret":client_secret,@"code":code};
     [[GithubHttpTool sharedInstance] post:GithubTokenUrl params:param success:^(id responseObj) {
-        NSLog(@"Joker 1238 is %@",responseObj);
+
         NSString *github_token = [(NSDictionary *)responseObj objectForKey:@"access_token"];
 
         //保存token
         [NSUserDefaults setToken:github_token];
-        NSLog(@"Joker number is %@",self.delegate);
+
         if([self.delegate respondsToSelector:@selector(pullUserInfo)]){
             [self.delegate pullUserInfo];
         }
     } failure:^(id error) {
 
-        NSLog(@"somthing wrong %@",error);
+        NSLog(@"somthing wrong 111 %@",error);
     }];
 }
 

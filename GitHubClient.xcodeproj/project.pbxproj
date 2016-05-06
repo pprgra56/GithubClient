@@ -18,6 +18,7 @@
 		40255AF11CD5011400BC0F7C /* GitHubClientUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 40255AF01CD5011400BC0F7C /* GitHubClientUITests.m */; };
 		9B1B95B41CDB49DD00FCF4AC /* NSUserDefaults+Joker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B95B31CDB49DD00FCF4AC /* NSUserDefaults+Joker.m */; };
 		9B1B95B71CDB748300FCF4AC /* GithubHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B95B61CDB748300FCF4AC /* GithubHttpTool.m */; };
+		9B1B95BB1CDC36CC00FCF4AC /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B1B95BA1CDC36CC00FCF4AC /* UserInfoModel.m */; };
 		9B29F3591CD8B2CB009C9C30 /* OAuth2Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B29F3581CD8B2CB009C9C30 /* OAuth2Helper.m */; };
 		9B29F35D1CD8E150009C9C30 /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B29F35C1CD8E150009C9C30 /* HttpTool.m */; };
 		9B29F3611CD99EE1009C9C30 /* NSString+Joker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B29F3601CD99EE1009C9C30 /* NSString+Joker.m */; };
@@ -62,10 +63,12 @@
 		9B1B95B31CDB49DD00FCF4AC /* NSUserDefaults+Joker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Joker.m"; sourceTree = "<group>"; };
 		9B1B95B51CDB748300FCF4AC /* GithubHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubHttpTool.h; sourceTree = "<group>"; };
 		9B1B95B61CDB748300FCF4AC /* GithubHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubHttpTool.m; sourceTree = "<group>"; wrapsLines = 0; };
+		9B1B95B91CDC36CC00FCF4AC /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		9B1B95BA1CDC36CC00FCF4AC /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		9B29F3571CD8B2CB009C9C30 /* OAuth2Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth2Helper.h; sourceTree = "<group>"; };
 		9B29F3581CD8B2CB009C9C30 /* OAuth2Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuth2Helper.m; sourceTree = "<group>"; wrapsLines = 0; };
 		9B29F35B1CD8E150009C9C30 /* HttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpTool.h; sourceTree = "<group>"; wrapsLines = 0; };
-		9B29F35C1CD8E150009C9C30 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; };
+		9B29F35C1CD8E150009C9C30 /* HttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpTool.m; sourceTree = "<group>"; wrapsLines = 0; };
 		9B29F35F1CD99EE1009C9C30 /* NSString+Joker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Joker.h"; sourceTree = "<group>"; };
 		9B29F3601CD99EE1009C9C30 /* NSString+Joker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Joker.m"; sourceTree = "<group>"; };
 		B3F90B7742DF2C2777E1377A /* Pods-GitHubClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		40255ACA1CD5011400BC0F7C /* GitHubClient */ = {
 			isa = PBXGroup;
 			children = (
+				9B1B95B81CDC364000FCF4AC /* Model */,
 				9B1B95B11CDB47AB00FCF4AC /* Storyboard */,
 				9B29F35E1CD99EC8009C9C30 /* Category */,
 				9B29F35A1CD8E126009C9C30 /* HttpClient */,
@@ -197,6 +201,15 @@
 				40255AD91CD5011400BC0F7C /* LaunchScreen.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		9B1B95B81CDC364000FCF4AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B1B95B91CDC36CC00FCF4AC /* UserInfoModel.h */,
+				9B1B95BA1CDC36CC00FCF4AC /* UserInfoModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		9B29F35A1CD8E126009C9C30 /* HttpClient */ = {
@@ -404,6 +417,7 @@
 			files = (
 				9B1B95B41CDB49DD00FCF4AC /* NSUserDefaults+Joker.m in Sources */,
 				40255AD31CD5011400BC0F7C /* ViewController.m in Sources */,
+				9B1B95BB1CDC36CC00FCF4AC /* UserInfoModel.m in Sources */,
 				9B29F3611CD99EE1009C9C30 /* NSString+Joker.m in Sources */,
 				9B29F35D1CD8E150009C9C30 /* HttpTool.m in Sources */,
 				9B1B95B71CDB748300FCF4AC /* GithubHttpTool.m in Sources */,

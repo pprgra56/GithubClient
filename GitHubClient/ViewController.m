@@ -36,6 +36,10 @@
 - (IBAction)click:(id)sender {
     [self.oauth2Helper openLoginUrl];
 }
+- (IBAction)clickUserInfo:(UIButton *)sender {
+
+    [self.oauth2Helper pullUserInfoWithToken];
+}
 
 
 
@@ -46,6 +50,7 @@
 }
 
 - (void)displayUserInfo:(id)userInfo{
+
     NSLog(@"Joker number is %@",userInfo);
     [self.texttv setText:[NSString stringWithFormat:@"%@",userInfo]];
 }
