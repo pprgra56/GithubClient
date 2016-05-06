@@ -64,48 +64,49 @@
 
     [self.manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
-        NSLog(@"Joker statusCode is %d",((NSHTTPURLResponse *)task.response).statusCode);
+        long statusCode = ((NSHTTPURLResponse *)task.response).statusCode;
+        NSLog(@"😇Joker statusCode is  %ld",statusCode);
         if(success){
 
 
             NSString *etag = ((NSDictionary *)((NSHTTPURLResponse *)task.response).allHeaderFields)[@"Etag"];
             self.eTag = etag;
 
-
-
-
-
-
-
-
-            /* 归档
-            NSDictionary *result =  (NSDictionary *)responseObject;
-
-            UserInfoModel *uInfo = [UserInfoModel new];
-            uInfo.identify =  result[@"id"];
-            uInfo.name = result[@"name"];
-            uInfo.blog = result[@"blog"];
-            uInfo.company = result[@"company"];
-            uInfo.email = result[@"email"];
-
-
             NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
             NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.arc"];
+            if(statusCode ==200){
 
+                NSDictionary *result =  (NSDictionary *)responseObject;
 
-            [NSKeyedArchiver archiveRootObject:uInfo toFile:path];
+                UserInfoModel *uInfo = [UserInfoModel new];
+                uInfo.identify =  result[@"id"];
+                uInfo.name = result[@"name"];
+                uInfo.blog = result[@"blog"];
+                uInfo.company = result[@"company"];
+                uInfo.email = result[@"email"];
 
+                //归档
+                [NSKeyedArchiver archiveRootObject:uInfo toFile:path];
 
-            UserInfoModel *model =  [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+            }else if(statusCode == 304){
 
-             */
+                //读取缓存
+                UserInfoModel *model =  [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+                NSLog(@"userInfo id =%@",model.identify);
+                NSLog(@"userInfo name =%@",model.name);
+                NSLog(@"userInfo blog =%@",model.blog);
+                NSLog(@"userInfo company =%@",model.company);
+                NSLog(@"userInfo email =%@",model.email);
+
+            }
+
 
 
             success(responseObject);
         }
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Joker statusCode is %d",((NSHTTPURLResponse *)task.response).statusCode);
+
      if(failure) failure(error);
     }];
 }
