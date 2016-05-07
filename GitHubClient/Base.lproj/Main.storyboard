@@ -42,7 +42,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-cO-waN">
                                 <rect key="frame" x="300" y="400" width="150" height="200"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="nothing"/>
+                                <state key="normal" title="user repository"/>
+                                <connections>
+                                    <action selector="getRepositorylist:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ynt-hV-a5o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLu-sY-ReV">
                                 <rect key="frame" x="450" y="400" width="150" height="200"/>

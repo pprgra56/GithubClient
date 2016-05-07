@@ -17,8 +17,11 @@
 
 #define CLIENT_ID @"b3eb1dd9811e58d681a0"
 #define client_secret @"0ae4efec24d439192e0c9b0d2af303692f47f4a2"
-#define SCOPE @"user"
+#define SCOPE @"user,public_repo,repo,notifications,gist,read:org"
 #define REDIRECT_URI @"pprgra56://"
+
+#define RepositoryList_Url @"https://api.github.com/user/repos"
+
 @import UIKit;
 
 
@@ -34,8 +37,6 @@
     NSString *urlstr = [NSString stringWithFormat:@"%@?client_id=%@&scope=%@&redirect_uri=%@",GithubLoginUrl,CLIENT_ID,SCOPE,REDIRECT_URI];
 
     NSLog(@"Joker url is  %@",urlstr);
-
-
 
 
     NSURL *url = [NSURL URLWithString:urlstr];
@@ -78,6 +79,17 @@
         if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
     } failure:nil];
 
+}
+- (void)RepositoryList{
+
+    [[GithubHttpTool sharedInstance] getRepositoryWithUrl:RepositoryList_Url success:^(id responseObj) {
+
+        NSLog(@"Joker resut  %@",responseObj);
+
+    } failure:^(id error) {
+
+        NSLog(@"sth wrong %@",error);
+    }];
 }
 
 @end

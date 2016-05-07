@@ -29,9 +29,18 @@
  *  @param success <#success description#>
  *  @param failure <#failure description#>
  */
-- (void)get:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
+- (void)get:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj,id task))success failure:(void (^)(id error))failure;
 
 
+/**
+ *  test use
+ *
+ *  @param url     <#url description#>
+ *  @param param   <#param description#>
+ *  @param success <#success description#>
+ *  @param failure <#failure description#>
+ */
+//- (void)get2:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj))success failure:(void (^)(id error))failure;
 
 
 @end

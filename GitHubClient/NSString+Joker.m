@@ -11,6 +11,7 @@
 @implementation NSString (Joker)
 
 +(NSString *)cutString:(NSString *)str atSympol:(NSString *)symple{
+
     NSRange range =  [str rangeOfString:symple];
     return [[NSString stringWithFormat:@"%@",str] substringFromIndex:range.location+range.length];
 }

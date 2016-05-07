@@ -42,4 +42,10 @@
  */
 - (void)pullUserInfoWithToken;
 
+
+/**
+ *  获取库列表
+ */
+- (void)RepositoryList;
+
 @end

@@ -41,6 +41,9 @@
     [self.oauth2Helper pullUserInfoWithToken];
 }
 
+- (IBAction)getRepositorylist:(id)sender {
+    [self.oauth2Helper RepositoryList];
+}
 
 
 #pragma mark - OAuth2HelperDelegate

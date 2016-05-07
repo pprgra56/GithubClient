@@ -15,6 +15,7 @@ static NSString *const kGithubTokenKey = @"kGithubTokenKey";
 + (void)setToken:(NSString *)token{
 
     if(token.length>0){
+
         [[NSUserDefaults standardUserDefaults] setObject:token forKey:kGithubTokenKey];
     }
 }
