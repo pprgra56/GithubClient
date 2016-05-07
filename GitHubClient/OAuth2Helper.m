@@ -84,7 +84,7 @@
 
     [[GithubHttpTool sharedInstance] getRepositoryWithUrl:RepositoryList_Url success:^(id responseObj) {
 
-        NSLog(@"Joker resut  %@",responseObj);
+       if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
 
     } failure:^(id error) {
 

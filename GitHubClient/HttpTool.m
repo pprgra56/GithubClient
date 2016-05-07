@@ -57,14 +57,9 @@
 
 - (void)get:(NSString *)url params:(NSDictionary *)param success:(void (^)(id responseObj,id task))success failure:(void (^)(id error))failure{
 
-    if (self.eTag.length > 0) {
-        [_manager.requestSerializer setValue:self.eTag forHTTPHeaderField:@"If-None-Match"];
-        _manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    }
+
 
     [self.manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-
 
         if(success){
 

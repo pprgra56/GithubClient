@@ -80,7 +80,11 @@
 
 - (void)getRepositoryWithUrl:(NSString *)url success:(void (^)(id responseObj))success failure:(void (^)(id error))failure{
 
-
+    AFHTTPSessionManager *manager =  [_httpTool performSelector:@selector(manager)];
+    if (self.eTag.length > 0) {
+        [manager.requestSerializer setValue:self.eTag forHTTPHeaderField:@"If-None-Match"];
+        manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    }
 
 
     [_httpTool get:url params:nil success:^(id responseObj,id task) {
@@ -92,25 +96,25 @@
         self.eTag = etag;
 
         NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *path = [docPath stringByAppendingPathComponent:@"userInfo.arc"];
-        if(statusCode ==200){
+        NSString *path = [docPath stringByAppendingPathComponent:@"Repository.arc"];
 
-            NSDictionary *result =  (NSDictionary *)responseObject;
+        if(statusCode == 200){
+
+            NSDictionary *result =  (NSDictionary *)responseObj;
 
             //归档
             [NSKeyedArchiver archiveRootObject:result toFile:path];
+            if(success) success(responseObj);
 
         }else if(statusCode == 304){
 
             //读取缓存
             NSDictionary  *resultDic =  [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-            NSLog(@"result  id is %@",resultDic[@"id"]);
+            NSLog(@"Joker number is %@",resultDic);
+            if(success) success(resultDic);
         }
 
 
-
-
-        if(success) success(responseObj);
     } failure:^(id error) {
 
         NSLog(@"someting wrong %@",error);
