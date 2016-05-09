@@ -13,6 +13,8 @@
 - (void)pullUserInfo;
 
 - (void)displayUserInfo:(id)userInfo;
+
+- (void)refreshList:(id)userInfo;
 @end
 
 

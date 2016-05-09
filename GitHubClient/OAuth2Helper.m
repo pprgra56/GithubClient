@@ -84,7 +84,8 @@
 
     [[GithubHttpTool sharedInstance] getRepositoryWithUrl:RepositoryList_Url success:^(id responseObj) {
 
-       if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
+        if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
+        if([self.delegate respondsToSelector:@selector(refreshList:)]) [self.delegate refreshList:responseObj];
 
     } failure:^(id error) {
 

@@ -11,7 +11,8 @@
 #import "NSUserDefaults+Joker.h"
 #import "AFHTTPSessionManager.h"
 #import "AFNetworking.h"
-
+#import "MJExtension.h"
+#import "Repository.h"
 
 @interface GithubHttpTool()
 
@@ -89,7 +90,7 @@
 
     [_httpTool get:url params:nil success:^(id responseObj,id task) {
 
-         long statusCode = ((NSHTTPURLResponse *)((NSURLSessionDataTask *) task).response).statusCode;
+        long statusCode = ((NSHTTPURLResponse *)((NSURLSessionDataTask *) task).response).statusCode;
         NSLog(@"😇Joker code status = %ld",statusCode);
 
         NSString *etag = ((NSDictionary *)(((NSHTTPURLResponse *)((NSURLSessionDataTask *) task).response).allHeaderFields))[@"Etag"];
@@ -100,18 +101,24 @@
 
         if(statusCode == 200){
 
-            NSDictionary *result =  (NSDictionary *)responseObj;
+            NSArray *result =  (NSArray *)responseObj;
+
+             NSArray *array = [Repository mj_objectArrayWithKeyValuesArray:responseObj];
+
+
 
             //归档
             [NSKeyedArchiver archiveRootObject:result toFile:path];
-            if(success) success(responseObj);
+            if(success) success(array);
 
         }else if(statusCode == 304){
 
             //读取缓存
-            NSDictionary  *resultDic =  [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-            NSLog(@"Joker number is %@",resultDic);
-            if(success) success(resultDic);
+            NSArray  *responseObjArray =  [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+             NSArray *array = [Repository mj_objectArrayWithKeyValuesArray:responseObjArray];
+
+            if(success) success(array);
         }
 
 

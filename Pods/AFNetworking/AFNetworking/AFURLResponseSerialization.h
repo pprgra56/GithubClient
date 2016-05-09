@@ -1,5 +1,5 @@
 // AFURLResponseSerialization.h
-// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
+// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
  */
-@property (nonatomic, copy, nullable) NSMutableIndexSet *acceptableStatusCodes;
+@property (nonatomic, copy, nullable) NSIndexSet *acceptableStatusCodes;
 
 /**
  The acceptable MIME types for responses. When non-`nil`, responses with a `Content-Type` with MIME types that do not intersect with the set will result in an error during validation.

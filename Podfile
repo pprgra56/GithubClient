@@ -5,6 +5,8 @@ use_frameworks!
 
 target 'GitHubClient' do
 pod 'AFNetworking'
+pod 'SDWebImage', '~> 3.7.5'
+pod 'MJExtension', '~> 3.0.10'
 end
 
 target 'GitHubClientTests' do
