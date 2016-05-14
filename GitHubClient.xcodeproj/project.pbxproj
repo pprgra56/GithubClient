@@ -24,7 +24,6 @@
 		9B29F3611CD99EE1009C9C30 /* NSString+Joker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B29F3601CD99EE1009C9C30 /* NSString+Joker.m */; };
 		9B4EED3F1CE76C5D005C24F4 /* UserRepositoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EED3E1CE76C5D005C24F4 /* UserRepositoryCell.m */; };
 		9B4EED421CE76D98005C24F4 /* Repository.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EED411CE76D98005C24F4 /* Repository.m */; };
-		9B4EED441CE76FB8005C24F4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4EED431CE76FB8005C24F4 /* Realm.framework */; };
 		9B4EED461CE76FC6005C24F4 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4EED451CE76FC6005C24F4 /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 		9B4EED3E1CE76C5D005C24F4 /* UserRepositoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRepositoryCell.m; sourceTree = "<group>"; };
 		9B4EED401CE76D98005C24F4 /* Repository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Repository.h; sourceTree = "<group>"; };
 		9B4EED411CE76D98005C24F4 /* Repository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Repository.m; sourceTree = "<group>"; };
-		9B4EED431CE76FB8005C24F4 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../../Realm.framework; sourceTree = "<group>"; };
 		9B4EED451CE76FC6005C24F4 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		B3F90B7742DF2C2777E1377A /* Pods-GitHubClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.release.xcconfig"; sourceTree = "<group>"; };
 		BFFB14B87C452ECFBF7EC8E8 /* Pods-GitHubClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubClient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubClient/Pods-GitHubClient.debug.xcconfig"; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4EED461CE76FC6005C24F4 /* libc++.tbd in Frameworks */,
-				9B4EED441CE76FB8005C24F4 /* Realm.framework in Frameworks */,
 				31B22259E37E7822F99FB3EE /* Pods_GitHubClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -125,7 +122,6 @@
 		40255ABF1CD5011400BC0F7C = {
 			isa = PBXGroup;
 			children = (
-				9B4EED431CE76FB8005C24F4 /* Realm.framework */,
 				40255ACA1CD5011400BC0F7C /* GitHubClient */,
 				40255AE41CD5011400BC0F7C /* GitHubClientTests */,
 				40255AEF1CD5011400BC0F7C /* GitHubClientUITests */,
@@ -611,6 +607,10 @@
 			baseConfigurationReference = BFFB14B87C452ECFBF7EC8E8 /* Pods-GitHubClient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GitHubClient",
+				);
 				INFOPLIST_FILE = GitHubClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangqilong.GitHubClient;
@@ -623,6 +623,10 @@
 			baseConfigurationReference = B3F90B7742DF2C2777E1377A /* Pods-GitHubClient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/GitHubClient",
+				);
 				INFOPLIST_FILE = GitHubClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zangqilong.GitHubClient;
