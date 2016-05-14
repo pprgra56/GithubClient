@@ -22,9 +22,7 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
 
 
-    if(url.absoluteString.length > 0)
-        [self.oauth2Helper getCodeFromUrl:url];
-
+    if(url.absoluteString.length > 0) [self.oauth2Helper getCodeFromUrl:url];
     return YES;
 }
- @end
+@end

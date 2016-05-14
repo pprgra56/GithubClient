@@ -10,11 +10,15 @@
 
 @implementation NSString (Joker)
 
-+(NSString *)cutString:(NSString *)str atSympol:(NSString *)symple{
++(NSString *)interception:(NSString *)str from:(NSString *)symple{
+
     NSRange range =  [str rangeOfString:symple];
     return [[NSString stringWithFormat:@"%@",str] substringFromIndex:range.location+range.length];
 }
-
++ (NSString *)getDocPathWithComponent:(NSString *)component{
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    return [docPath stringByAppendingPathComponent:component];
+}
 
 
 @end

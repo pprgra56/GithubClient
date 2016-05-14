@@ -11,14 +11,17 @@
 #import "NSString+Joker.h"
 #import "NSUserDefaults+Joker.h"
 
-#define GithubLoginUrl @"https://github.com/login/oauth/authorize"
-#define GithubTokenUrl @"https://github.com/login/oauth/access_token"
-#define GithubCodeUrl  @"https://api.github.com/user?access_token="
+NSString * const GithubLoginUrl = @"https://github.com/login/oauth/authorize";
+NSString * const GithubTokenUrl =  @"https://github.com/login/oauth/access_token";
+NSString * const GithubCodeUrl = @"https://api.github.com/user?access_token=";
 
-#define CLIENT_ID @"b3eb1dd9811e58d681a0"
-#define client_secret @"0ae4efec24d439192e0c9b0d2af303692f47f4a2"
-#define SCOPE @"user"
-#define REDIRECT_URI @"pprgra56://"
+NSString * const CLIENT_ID =@"b3eb1dd9811e58d681a0";
+NSString * const client_secret= @"0ae4efec24d439192e0c9b0d2af303692f47f4a2";
+NSString * const SCOPE =@"user,public_repo,repo,notifications,gist,read:org";
+NSString * const REDIRECT_URI =@"pprgra56://";
+
+NSString * const RepositoryList_Url= @"https://api.github.com/user/repos";
+
 @import UIKit;
 
 
@@ -36,8 +39,6 @@
     NSLog(@"Joker url is  %@",urlstr);
 
 
-
-
     NSURL *url = [NSURL URLWithString:urlstr];
 
     if([application canOpenURL:url]){
@@ -45,9 +46,10 @@
     }
 }
 
+
 - (void)getCodeFromUrl:(NSURL *)url{
 
-    NSString *code =  [NSString cutString:url.absoluteString atSympol:@"="];
+    NSString *code =  [NSString interception:url.absoluteString from:@"="];
 
     [self getTokenWithCode:code];
 }
@@ -66,7 +68,7 @@
         }
     } failure:^(id error) {
 
-        NSLog(@"somthing wrong 111 %@",error);
+        NSLog(@"somthing wrong   %@",error);
     }];
 }
 
@@ -78,6 +80,18 @@
         if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
     } failure:nil];
 
+}
+- (void)RepositoryList{
+
+    [[GithubHttpTool sharedInstance] getRepositoryWithUrl:RepositoryList_Url success:^(id responseObj) {
+
+        if([self.delegate respondsToSelector:@selector(displayUserInfo:)]) [self.delegate displayUserInfo:responseObj];
+        if([self.delegate respondsToSelector:@selector(refreshList:)]) [self.delegate refreshList:responseObj];
+        
+    } failure:^(id error) {
+        
+        NSLog(@"sth wrong %@",error);
+    }];
 }
 
 @end

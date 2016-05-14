@@ -18,6 +18,11 @@
  *
  *  @return 返回字符串
  */
-+(NSString *)cutString:(NSString *)str atSympol:(NSString *)symple;
++ (NSString *)interception:(NSString *)str from:(NSString *)symple;
+
++ (NSString *)getDocPathWithComponent:(NSString *)component;
+
+
+
 
 @end
